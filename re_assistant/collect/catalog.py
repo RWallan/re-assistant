@@ -3,6 +3,7 @@ Busca o catálogo de personagens do Resident Evil Database.
 
 Catálogo disponível em: https://www.residentevildatabase.com/personagens/
 """
+
 from bs4 import BeautifulSoup
 from loguru import logger
 
