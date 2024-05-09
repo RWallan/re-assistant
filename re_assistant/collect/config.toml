@@ -1,0 +1,18 @@
+catalog_url = 'https://www.residentevildatabase.com/personagens/'
+
+[headers]
+accept = 'text/htmlapplication/xhtml+xmlapplication/xml;q=0.9image/avifimage/webpimage/apng*/*;q=0.8'
+accept_language = 'pt-BRpt;q=0.9'
+cache_control = 'max-age=0'
+priority = 'u=0 i'
+referer = 'https://github.com/'
+sec_ch_ua = '"Chromium";v="124" "Brave";v="124" "Not-A.Brand";v="99"'
+sec_ch_ua_mobile = '?0'
+sec_ch_ua_platform = '"Windows"'
+sec_fetch_dest = 'document'
+sec_fetch_mode = 'navigate'
+sec_fetch_site = 'cross-site'
+sec_fetch_user = '?1'
+sec_gpc = '1'
+upgrade_insecure_requests = '1'
+user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/124.0.0.0 Safari/537.36'

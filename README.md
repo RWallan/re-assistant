@@ -16,7 +16,7 @@ Disponibilizar um CLI que disponibiliza facilmente a interação do usuário com
 
 As metas a serem alcançadas são:
 
-- [ ] Construir a base de dados contendo informações básicas dos [personagens disponíveis]([Personagens de Resident Evil | Resident Evil Database](https://www.residentevildatabase.com/personagens/) na database
+- [ ] Construir a base de dados contendo informações básicas dos [personagens disponíveis](https://www.residentevildatabase.com/personagens/) na database
 
 - [ ] Construir uma base de treino para o fine tuning
 
@@ -78,7 +78,7 @@ A lista de todos para que a primeira versão seja disponibilizada:
 
 - [x] Organizar ambiente scrum
 
-- [ ] Criar método para buscar o catálogo de personagens
+- [x] Criar método para buscar o catálogo de personagens
 
 - [ ] Criar método para buscar as informações básicas de cada personagem no catálogo
 
