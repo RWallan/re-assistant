@@ -1,6 +1,7 @@
 name: 'Check Branch'
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - "main"
