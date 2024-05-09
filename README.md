@@ -78,7 +78,7 @@ A lista de todos para que a primeira versão seja disponibilizada:
 
 - [x] Organizar ambiente scrum
 
-- [ ] Criar método para buscar o catálogo de personagens
+- [x] Criar método para buscar o catálogo de personagens
 
 - [ ] Criar método para buscar as informações básicas de cada personagem no catálogo
 
