@@ -76,7 +76,7 @@ A lista de todos para que a primeira versão seja disponibilizada:
 
 - [x] Construir metadata o projeto
 
-- [ ] Organizar ambiente scrum
+- [x] Organizar ambiente scrum
 
 - [ ] Criar método para buscar o catálogo de personagens
 
