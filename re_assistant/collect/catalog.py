@@ -1,3 +1,8 @@
+"""
+Busca o catálogo de personagens do Resident Evil Database.
+
+Catálogo disponível em: https://www.residentevildatabase.com/personagens/
+"""
 from bs4 import BeautifulSoup
 from loguru import logger
 
@@ -6,6 +11,15 @@ from re_assistant.utils import fetch_html_content
 
 
 async def get_catalog():
+    """Cria o catálogo de personagens do Resident Evil Database.
+
+    Busca todos os links relacionados aos personagens disponíveis em:
+    https://www.residentevildatabase.com/personagens/
+
+    Returns:
+        list[str] | None: Links de todos os personagens disponíveis.
+    """
+
     headers = {
         key.replace('_', '-'): value
         for key, value in settings.headers.model_dump().items()

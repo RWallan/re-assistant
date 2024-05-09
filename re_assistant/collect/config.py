@@ -1,6 +1,4 @@
-"""
-Este módulo é responsável por configurar os requests para o scraping.
-"""
+"""Define as configurações dos requests."""
 
 from pathlib import Path
 from typing import Type
@@ -17,6 +15,8 @@ HERE = Path(__file__).parent
 
 
 class Headers(BaseModel):
+    """Representa as informações do header do HTTP."""
+
     accept: str
     accept_language: str
     cache_control: str
@@ -35,6 +35,8 @@ class Headers(BaseModel):
 
 
 class Settings(BaseSettings):
+    """Define as configurações para as requisições HTTP."""
+
     model_config = SettingsConfigDict(toml_file=HERE / 'config.toml')
     catalog_url: str
     headers: Headers
