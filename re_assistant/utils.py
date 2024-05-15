@@ -5,7 +5,9 @@ from loguru import logger
 
 
 async def fetch_html_content(url, headers=None):
-    async with httpx.AsyncClient(follow_redirects=True) as client:
+    async with httpx.AsyncClient(
+        follow_redirects=True, timeout=None
+    ) as client:
         response = await client.get(url, headers=headers)
 
     if response.status_code != HTTPStatus.OK:
