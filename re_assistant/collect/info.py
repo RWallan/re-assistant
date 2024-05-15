@@ -87,6 +87,12 @@ def get_biography_info(soup):
 
 
 async def get_char_infos(url):
+    """Aplica o pipeline para buscar todas as informações do peronsagem.
+
+    Returns:
+        dict: Dados do personagem contendo: perfil, titulos, biografia.
+    """
+
     headers = {
         key.replace('_', '-'): value
         for key, value in settings.headers.model_dump().items()
