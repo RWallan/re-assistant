@@ -8,7 +8,11 @@ As informações contemplam:
 - Biografia
 """
 
+from bs4 import BeautifulSoup
 from loguru import logger
+
+from re_assistant.collect.config import settings
+from re_assistant.utils import fetch_html_content
 
 
 def get_basic_info(soup):
@@ -80,3 +84,28 @@ def get_biography_info(soup):
             content.append(tag.text)
 
     return {'biography': r'\n'.join(content)}
+
+
+async def get_char_infos(url):
+    headers = {
+        key.replace('_', '-'): value
+        for key, value in settings.headers.model_dump().items()
+    }
+    html_content = await fetch_html_content(url, headers)
+    if not html_content:
+        logger.error(
+            "Não foi possível encontrar a div com a classe 'td-page-content'"
+        )
+        return None
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    data = {
+        'link': url,
+        'name': url.strip('/').split('/')[-1].replace('-', '').title(),
+    }
+
+    data.update(get_basic_info(soup))
+    data.update(get_titles_info(soup))
+    data.update(get_biography_info(soup))
+
+    return data

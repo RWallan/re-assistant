@@ -5,6 +5,7 @@ from re_assistant.collect.config import settings
 from re_assistant.collect.info import (
     get_basic_info,
     get_biography_info,
+    get_char_infos,
     get_titles_info,
 )
 from re_assistant.utils import fetch_html_content
@@ -87,3 +88,16 @@ def test_get_biography():
     bio = get_biography_info(soup)
 
     assert bio == expected
+
+
+@pytest.mark.asyncio()
+async def test_get_char_info():
+    url = 'https://www.residentevildatabase.com/personagens/ada-wong/'
+    data = await get_char_infos(url)
+
+    assert 'titles' in data  # pyright: ignore
+    assert 'biography' in data  # pyright: ignore
+    assert 'Ano de nascimento' in data  # pyright: ignore
+    assert 'Tipo sanguíneo' in data  # pyright: ignore
+    assert 'Altura' in data  # pyright: ignore
+    assert 'Peso' in data  # pyright: ignore
