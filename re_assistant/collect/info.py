@@ -1,12 +1,28 @@
+"""
+Busca informações relacionadas aos personagens do Resident Evil.
+
+As informações contemplam:
+
+- Perfil
+- Títulos que participou
+- Biografia
+"""
+
 from loguru import logger
 
 
 def get_basic_info(soup):
+    """Busca informações de perfil do personagem.
+
+    Returns:
+        dict[str, str] | None: Informações de perfil.
+    """
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
             "Não foi possível encontrar a div com a classe 'td-page-content'"
         )
+        return None
 
     topics = page_content.find_all('p')[1].find_all('em')
 
@@ -22,6 +38,11 @@ def get_basic_info(soup):
 
 
 def get_titles_info(soup):
+    """Busca quais os titulos das séries o personagem participou.
+
+    Returns:
+        dict[str, list[str]] | None: Séries que o personagem participou.
+    """
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
@@ -37,6 +58,12 @@ def get_titles_info(soup):
 
 
 def get_biography_info(soup):
+    """Busca a biografia o personagem.
+
+    Returns:
+        dict[str, str] | None: Biografia do personagem.
+
+    """
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
@@ -52,4 +79,4 @@ def get_biography_info(soup):
         else:
             content.append(tag.text)
 
-    return {'biography': r"\n".join(content)}
+    return {'biography': r'\n'.join(content)}
