@@ -15,14 +15,14 @@ def get_basic_info(soup):
     """Busca informações de perfil do personagem.
 
     Returns:
-        dict[str, str] | None: Informações de perfil.
+        dict: Informações de perfil.
     """
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
             "Não foi possível encontrar a div com a classe 'td-page-content'"
         )
-        return None
+        return {}
 
     topics = page_content.find_all('p')[1].find_all('em')
 
@@ -41,14 +41,14 @@ def get_titles_info(soup):
     """Busca quais os titulos das séries o personagem participou.
 
     Returns:
-        dict[str, list[str]] | None: Séries que o personagem participou.
+        dict: Séries que o personagem participou.
     """
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
             "Não foi possível encontrar a div com a classe 'td-page-content'"
         )
-        return None
+        return {}
 
     items = page_content.find_all('li')
 
@@ -61,7 +61,7 @@ def get_biography_info(soup):
     """Busca a biografia o personagem.
 
     Returns:
-        dict[str, str] | None: Biografia do personagem.
+        dict: Biografia do personagem.
 
     """
     page_content = soup.find('div', class_='td-page-content')
@@ -70,7 +70,7 @@ def get_biography_info(soup):
             "Não foi possível encontrar a div com a classe 'td-page-content'"
         )
 
-        return None
+        return {}
 
     content = []
     for tag in page_content.find('h4').next_siblings:
