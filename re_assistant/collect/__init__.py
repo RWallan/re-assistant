@@ -14,6 +14,11 @@ ROOT = Path(__file__).cwd()
 
 @logger.catch()
 async def create_char_database():
+    """Executa todo o pipeline para criar o database do personagem.
+
+    Returns:
+        str: path até o arquivo da database.
+    """
     database_dir = ROOT / 'data/database'
     database_dir.mkdir(parents=True, exist_ok=True)
 
