@@ -80,9 +80,9 @@ A lista de todos para que a primeira versão seja disponibilizada:
 
 - [x] Criar método para buscar o catálogo de personagens
 
-- [ ] Criar método para buscar as informações básicas de cada personagem no catálogo
+- [x] Criar método para buscar as informações básicas de cada personagem no catálogo
 
-- [ ] Persistir dados dos personagens
+- [x] Persistir dados dos personagens
 
 - [ ] Criar pipeline para construir os dados de exemplo para o fine tuning
 
