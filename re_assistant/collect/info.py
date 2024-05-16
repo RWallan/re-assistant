@@ -21,6 +21,14 @@ def get_basic_info(soup):
     Returns:
         dict: Informações de perfil.
     """
+
+    def strip_not_em_pattern(content):
+        return (
+            content.replace(r'</em>', '')
+            .replace('<em>', '')
+            .split('<br/>')[:-1]
+        )
+
     page_content = soup.find('div', class_='td-page-content')
     if not page_content:
         logger.error(
@@ -31,12 +39,30 @@ def get_basic_info(soup):
     topics = page_content.find_all('p')[1].find_all('em')
 
     if not topics:
-        logger.error('Não foi possível encontrar os tópicos dos personagens.')
+        topics = str(page_content.find_all('p')[1])
+        topics = strip_not_em_pattern(topics)
+        infos = {
+            key: value for key, value in [topic.split(':') for topic in topics]
+        }
+    elif len(topics) == 1:
+        topics = (
+            str(topics[0])
+            .replace(r'</em>', '')
+            .replace('<em>', '')
+            .split('<br/>')[:-1]
+        )
 
-    infos = {
-        key.strip(): value.strip()
-        for key, value in [topic.text.split(':') for topic in topics]
-    }
+        infos = {
+            key: value for key, value in [topic.split(':') for topic in topics]
+        }
+    else:
+        infos = {
+            key.strip(): value.strip()
+            for key, value in [topic.text.split(':') for topic in topics]
+        }
+
+    if not infos:
+        logger.error('Não foi possível buscar os itens do personagem.')
 
     return infos
 
@@ -105,11 +131,13 @@ async def get_char_infos(url):
         return None
 
     soup = BeautifulSoup(html_content, 'html.parser')
+    char_name = url.strip('/').split('/')[-1].replace('-', ' ').title()
     data = {
         'link': url,
-        'name': url.strip('/').split('/')[-1].replace('-', '').title(),
+        'name': char_name,
     }
 
+    logger.info(f'Buscando informações do personagem: {char_name}')
     data.update(get_basic_info(soup))
     data.update(get_titles_info(soup))
     data.update(get_biography_info(soup))
