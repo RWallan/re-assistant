@@ -1,3 +1,4 @@
+"""Reune métodos úteis para diferentes partes do projeto."""
 from http import HTTPStatus
 
 import httpx
@@ -5,6 +6,11 @@ from loguru import logger
 
 
 async def fetch_html_content(url, headers=None):
+    """Executa um fetch em um html.
+
+    Returns:
+        str | None: Retorna o elemento html.
+    """
     async with httpx.AsyncClient(
         follow_redirects=True, timeout=None
     ) as client:
